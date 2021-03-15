@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  /* width of panels */
+  flex: 0.5;
+  margin: 10px;
+  /* to arrange positionşng h3 in the panel make this relative  */
+  position: relative;
+  transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  /* make it invisiible so when its active we can make it visible */
+  opacity: 0;
+}
+
+.panel.active {
+  /* when it is active let the width change  */
+  flex: 5;
+}
+
+.panel.active h3 {
+  /* when it is active let the h3 be visible */
+  opacity: 1;
+  /* the 0.4s is the delay */
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media (max-width: 500px) {
+  /* this code block will run only the size of the screen will be under 480px */
+  .container {
+    width: 100vw;
+  }
+
+  /* when the screen is small let last 2 panel not show at all */
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
